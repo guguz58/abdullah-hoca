@@ -19,6 +19,7 @@ input.onButtonPressed(Button.B, function () {
     }
 })
 let kalibre = 0
+radio.setGroup(58)
 huskylens.initI2c()
 huskylens.initMode(protocolAlgorithm.OBJECTCLASSIFICATION)
 kalibre = 0
@@ -41,9 +42,12 @@ basic.forever(function () {
     }
     if (huskylens.isAppear(1, HUSKYLENSResultType_t.HUSKYLENSResultBlock)) {
         basic.showIcon(IconNames.Happy)
+        radio.sendNumber(1)
     } else if (huskylens.isAppear(2, HUSKYLENSResultType_t.HUSKYLENSResultBlock)) {
         basic.showIcon(IconNames.Asleep)
+        radio.sendNumber(2)
     } else if (huskylens.isAppear(3, HUSKYLENSResultType_t.HUSKYLENSResultBlock)) {
         basic.showIcon(IconNames.Sad)
+        radio.sendNumber(3)
     }
 })
